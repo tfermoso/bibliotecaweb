@@ -34,9 +34,11 @@ public class  IndexServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String titulo=req.getParameter("titulo");
+        String genero=req.getParameter("genero");
+        String codigo=req.getParameter("codigo");
         Biblioteca biblioteca=new Biblioteca();
+        biblioteca.addLibro(titulo,codigo,genero);
+        resp.sendRedirect("main");
 
-        PrintWriter out=resp.getWriter();
-        out.println("hola "+titulo);
     }
 }
