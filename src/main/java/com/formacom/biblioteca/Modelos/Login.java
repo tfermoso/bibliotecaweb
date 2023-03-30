@@ -19,6 +19,7 @@ public class Login {
             ResultSet resultado=stm.executeQuery();
             if(resultado.next()){
                 usuario=new Usuario();
+                usuario.setDni(resultado.getString("dni"));
                 usuario.setIdusuario(resultado.getInt("idusuario"));
                 usuario.setNombre(resultado.getString("nombre"));
                 usuario.setApellidos(resultado.getString("apellidos"));
