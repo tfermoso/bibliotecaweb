@@ -1,6 +1,7 @@
 <%@ page import="com.formacom.biblioteca.Modelos.Libro" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,10 @@
 <div class="container">
     <h1>Libros</h1>
     <hr>
-    <%=request.getAttribute("saludo")%>
+    <%
+        List<Libro> libroList= (List<Libro>) request.getAttribute("libros");
+
+    %>
     <table class="table table-dark">
         <thead>
         <tr>
@@ -23,9 +27,19 @@
         </tr>
         </thead>
         <tbody>
-
-
-
+        <%
+            for (int i = 0; i < libroList.size(); i++) {
+                Libro lib=libroList.get(i);
+                %>
+                <tr>
+                    <td><%=lib.getId()%></td>
+                    <td><%=lib.getCodigo()%></td>
+                    <td><%=lib.getTitulo()%></td>
+                    <td><%=lib.getGenero()%></td>
+                </tr>
+        <%
+            }
+        %>
         </tbody>
     </table>
 </div>

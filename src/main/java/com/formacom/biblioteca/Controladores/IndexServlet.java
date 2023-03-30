@@ -21,18 +21,10 @@ public class  IndexServlet extends HttpServlet {
 
         Biblioteca biblioteca=new Biblioteca();
         List<Libro> libros = biblioteca.getAllLibros();
-        for (int i = 0; i < libros.size(); i++) {
-            System.out.println(libros.get(i).getTitulo());
-        }
-        Libro libro=new Libro();
-        libro.setId(44);
-        libro.setTitulo("hola");
-        libro.setCodigo("asdf");
-        libro.setGenero("algo");
-        //libros.add(libro);
+
 
         try {
-            request.setAttribute("saludo","hola");
+            request.setAttribute("libros",libros);
 
             request.getRequestDispatcher("index.jsp").forward(request,response);
         } catch (ServletException e) {
