@@ -20,6 +20,8 @@ public class  IndexServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Biblioteca biblioteca=new Biblioteca();
         List<Libro> libros = biblioteca.getAllLibros();
+        HttpSession session = request.getSession(true);
+        session.setAttribute("nombre", "Juan");
         try {
             request.setAttribute("libros",libros);
             request.getRequestDispatcher("libros.jsp").forward(request,response);
