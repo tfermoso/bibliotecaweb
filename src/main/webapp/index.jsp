@@ -15,7 +15,9 @@
     <hr>
     <%
         List<Libro> libroList= (List<Libro>) request.getAttribute("libros");
-
+        if(libroList==null){
+            libroList=new ArrayList<>();
+        }
     %>
     <table class="table table-dark">
         <thead>
