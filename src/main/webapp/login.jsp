@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: tarde
@@ -22,7 +23,7 @@
                      class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-5 col-sm-12 col-lg-6 col-xl-4 offset-xl-1">
-                <form>
+                <form action="" method="post">
 
 
                     <!-- Email input -->
@@ -52,6 +53,9 @@
                     </div>
 
                 </form>
+                <c:if test="${msg!=null}">
+                    <p>${msg}</p>
+                </c:if>
             </div>
         </div>
     </div>

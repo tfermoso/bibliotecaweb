@@ -29,6 +29,7 @@ public class Login {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
         return usuario;
     }
