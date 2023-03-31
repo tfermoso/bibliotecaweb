@@ -25,6 +25,8 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("msg", "Usuario no existe");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             } else {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("usuario", usuario);
                 response.sendRedirect("main");
             }
         }catch (ServletException ex){

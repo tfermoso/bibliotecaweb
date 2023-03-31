@@ -1,3 +1,4 @@
+<%@ page import="com.formacom.biblioteca.Modelos.Usuario" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -15,6 +16,9 @@
 </head>
 <body class="container">
 <h1>Libros jstl</h1>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#"><%=((Usuario)request.getAttribute("usuario")).getNombre()%></a>
+</nav>
 <form class="form col-6" action="" method="post">
     <div class="form-group">
         <label class="form-label" for="titulo">Título</label>

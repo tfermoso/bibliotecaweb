@@ -20,19 +20,22 @@ public class  IndexServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Biblioteca biblioteca=new Biblioteca();
-        Usuario user=Login.login("71011411S","Tomas");
-        System.out.println(user.toString());
-
-        List<Libro> libros = biblioteca.getAllLibros();
         HttpSession session = request.getSession(true);
-        session.setAttribute("nombre", "Juan");
-        try {
-            request.setAttribute("libros",libros);
-            request.getRequestDispatcher("libros.jsp").forward(request,response);
-        } catch (ServletException e) {
-            throw new RuntimeException(e);
+        if(session.getAttribute("usuario")!=null){
+            Biblioteca biblioteca=new Biblioteca();
+            List<Libro> libros = biblioteca.getAllLibros();
+            Usuario usuario= (Usuario) session.getAttribute("usuario");
+            try {
+                request.setAttribute("usuario",usuario);
+                request.setAttribute("libros",libros);
+                request.getRequestDispatcher("libros.jsp").forward(request,response);
+            } catch (ServletException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            response.sendRedirect("login");
         }
+
     }
 
     public void destroy() {
